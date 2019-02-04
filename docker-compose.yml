@@ -1,0 +1,22 @@
+version: "3"
+services:
+  web:
+    image: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - webnet 
+   
+  jenkins:
+    image: jenkins
+    ports:
+      - "8081:8080"
+      - "50000:50000"
+    expose:
+      - "50000"
+      - "8080"
+    networks:
+      - webnet
+networks:
+   webnet:
